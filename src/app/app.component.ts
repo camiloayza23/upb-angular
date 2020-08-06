@@ -16,6 +16,7 @@ export class AppComponent implements OnInit{
 
     array.subscribe(s => console.log('item', s));
 
+    //Convertir eventos en observables
     const aux = fromEvent(document, 'mousemove');
 
     aux.subscribe((s:any) => console.log('event: ', s.clientX + ', ' +s.clientY));
