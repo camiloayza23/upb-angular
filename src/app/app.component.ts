@@ -12,15 +12,22 @@ export class AppComponent implements OnInit{
   ngOnInit(){
 
     //Convertir datos a observables
-    const array = from([1,2,3,4,5,6]);
+    /*const array = from([1,2,3,4,5,6]);
 
     array.subscribe(s => console.log('item', s));
 
     //Convertir eventos en observables
     const aux = fromEvent(document, 'mousemove');
 
-    aux.subscribe((s:any) => console.log('event: ', s.clientX + ', ' +s.clientY));
-    
+    aux.subscribe((s:any) => console.log('event: ', s.clientX + ', ' +s.clientY));*/
   }
+  saveClickChild(event){
+    console.log('EVENT CHILD: ', event);
+  }
+
+  saveJInfo(event){
+    console.log('EVENT JSON: ', event);
+  }
+  
 
 }
