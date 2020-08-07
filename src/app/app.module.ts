@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { T0807Component } from './t0807/t0807.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,9 +12,11 @@ import { T0807Component } from './t0807/t0807.component';
     AppComponent,
     TestComponent,
     T0807Component
+
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

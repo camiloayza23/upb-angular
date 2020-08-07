@@ -15,6 +15,8 @@ export class T0807Component implements OnInit {
   ngOnInit() {
   }
 
+  user:string = 'Maria';
+
   onClickSave(){
     this.clickDes.emit({
       name: this.name,
