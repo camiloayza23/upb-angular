@@ -5,3 +5,7 @@
   <button (click)="onClickSave()"> Save </button>
   <input type="text" [(ngModel)]= "user">
   <p> USER: {{ user }} </p> 
+
+  <div *ngFor="let person of persons; let i = index">
+    <p> {{person}} - {{i}} </p>
+  </div>

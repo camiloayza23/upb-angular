@@ -12,6 +12,7 @@ export class T0807Component implements OnInit {
   @Output () clickDes = new EventEmitter();
   constructor() { }
 
+  persons = ["Adri","Isa","Mica","Kady","Lupe"];
   ngOnInit() {
   }
 
