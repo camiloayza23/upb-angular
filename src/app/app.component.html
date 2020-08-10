@@ -1,5 +1,8 @@
 
   <h2>Resources happy</h2>
-  <app-test age="3" (clickAge)="saveClickChild($event)"></app-test>
+  <!--<app-test age="3" (clickAge)="saveClickChild($event)"></app-test>-->
+  <app-test *ngIf="sw" name="ricardo"></app-test>
+  <button (click)="sw = false;"> Change SW </button>
+  
   <app-t0807 age="21" name="Camila" description="UPB Student" (clickDes)="saveJInfo($event)" ></app-t0807>
 
