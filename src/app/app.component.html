@@ -1,8 +1,19 @@
 
   <h2>Resources happy</h2>
-  <!--<app-test age="3" (clickAge)="saveClickChild($event)"></app-test>-->
+  <!--<app-test age="3" (clickAge)="saveClickChild($event)"></app-test>
   <app-test *ngIf="sw" name="ricardo"></app-test>
   <button (click)="sw = false;"> Change SW </button>
   
-  <app-t0807 age="21" name="Camila" description="UPB Student" (clickDes)="saveJInfo($event)" ></app-t0807>
+  <app-t0807 age="21" name="Camila" description="UPB Student" (clickDes)="saveJInfo($event)" ></app-t0807>-->
 
+  <persona name="Camila" lastname="Loayza" age="22" enable="true"> </persona>
+
+<div *ngFor="let person of persons">
+  <div [ngStyle]="{'background': person.enable ? 'yellow' : 'red'}">
+    <persona [name]="person.name"
+    [lastname]="person.lastname"
+    [age]="person.age"
+    [enable]="person.enable">
+    </persona>
+  </div>
+</div>
