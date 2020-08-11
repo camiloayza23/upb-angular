@@ -10,6 +10,33 @@ export class AppComponent implements OnInit{
   title = 'curso-angular';
 
   sw = true;
+  persons = [
+    {
+      name:"Isabel",
+      lastname:"Mercado",
+      age:19,
+      enable:true
+    },
+    {
+      name:"Adriana",
+      lastname:"Leyton",
+      age:19,
+      enable:false
+    },
+    {
+      name:"Carla",
+      lastname:"Cespedes",
+      age:29,
+      enable:true
+    },
+    {
+      name:"Micaela",
+      lastname:"Marin",
+      age:22,
+      enable:false
+    }
+  ]
+
   ngOnInit(){
 
 

@@ -6,7 +6,6 @@
   
   <app-t0807 age="21" name="Camila" description="UPB Student" (clickDes)="saveJInfo($event)" ></app-t0807>-->
 
-  <persona name="Camila" lastname="Loayza" age="22" enable="true"> </persona>
 
 <div *ngFor="let person of persons">
   <div [ngStyle]="{'background': person.enable ? 'yellow' : 'red'}">

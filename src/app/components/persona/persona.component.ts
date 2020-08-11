@@ -11,13 +11,7 @@ export class PersonaComponent implements OnInit {
   @Input () age:number;
   @Input () enable:boolean;
   constructor() { }
-  personas = [
-    {
-      name:"Isabel"
-
-    }
-  ]
-
+ 
   ngOnInit() {
   }
 
