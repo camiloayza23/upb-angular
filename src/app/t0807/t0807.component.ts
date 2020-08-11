@@ -15,7 +15,7 @@ export class T0807Component implements OnInit {
   persons = ["Adri","Isa","Mica","Kady","Lupe"];
   ngOnInit() {
   }
-
+  auxColor:string = 'black';
   user:string = 'Maria';
 
   onClickSave(){

@@ -12,5 +12,16 @@
 
   <div [ngSwitch]="sw">
     <p *ngSwitchCase="3"> El valor es 3 </p>
-    <p *ngSwitchCase="2"> El valor es 3 </p>
+    <p *ngSwitchCase="2"> El valor es 2 </p>
     <p *ngSwitchDefault> No es ninguno </p>  </div> 
+
+<button (click)="auxColor='yellow'"> amarillo </button>
+<button (click)="auxColor='green'"> verde </button>
+<button (click)="auxColor='red'"> rojo </button>
+  <div [ngStyle]="{'border':'1px solid '+ auxColor, 'color':auxColor}">
+    personas
+  </div>
+
+  <div [style.color]="auxColor">
+    autos
+  </div>
