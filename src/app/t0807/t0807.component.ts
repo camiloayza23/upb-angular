@@ -17,6 +17,7 @@ export class T0807Component implements OnInit {
   }
   auxColor:string = 'black';
   user:string = 'Maria';
+  auxClass=true;
 
   onClickSave(){
     this.clickDes.emit({

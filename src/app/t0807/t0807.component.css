@@ -1,0 +1,11 @@
+.test1 {
+  border: 1px solid red;
+  color: green;
+  padding: 20px
+}
+
+.test2 {
+  border: 1px solid green;
+  color: gray;
+  padding: 20px
+}
