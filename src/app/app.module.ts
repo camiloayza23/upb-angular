@@ -6,6 +6,7 @@ import { TestComponent } from './components/test/test.component';
 import { T0807Component } from './components/t0807/t0807.component';
 import { FormsModule } from '@angular/forms';
 import { PersonaModule } from './modules/persona/persona.module';
+import { ProductoModule } from './modules/producto/producto.module';
 
 
 
@@ -15,13 +16,13 @@ import { PersonaModule } from './modules/persona/persona.module';
     AppComponent,
     TestComponent,
     T0807Component,
-
   ],
   imports: [
     //Modulos dentro de este modulo
     BrowserModule,
     FormsModule,
-    PersonaModule
+    PersonaModule,
+    ProductoModule
   ],
   providers: [
     //Servicios
