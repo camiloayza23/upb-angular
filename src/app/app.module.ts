@@ -8,12 +8,14 @@ import { FormsModule } from '@angular/forms';
 import { PersonaModule } from './modules/persona/persona.module';
 
 
+
 @NgModule({
   declarations: [
     //Componentes directivas
     AppComponent,
     TestComponent,
-    T0807Component
+    T0807Component,
+
   ],
   imports: [
     //Modulos dentro de este modulo
