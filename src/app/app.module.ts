@@ -10,6 +10,7 @@ import { PersonaComponent } from './components/persona/persona.component';
 
 @NgModule({
   declarations: [
+    //Componentes directivas
     AppComponent,
     TestComponent,
     T0807Component,
@@ -17,10 +18,13 @@ import { PersonaComponent } from './components/persona/persona.component';
 
   ],
   imports: [
+    //Modulos dentro de este modulo
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    //Servicios
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
