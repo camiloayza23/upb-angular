@@ -8,6 +8,9 @@ import { PersonaComponent } from './components/persona/persona.component';
   ],
   declarations: [
     PersonaComponent
+  ],
+  exports: [
+    PersonaComponent
   ]
 })
 export class PersonaModule { }
