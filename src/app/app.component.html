@@ -4,7 +4,7 @@
   <app-test *ngIf="sw" name="ricardo"></app-test>
   <button (click)="sw = false;"> Change SW </button>
   
-  <app-t0807 age="21" name="Camila" description="UPB Student" (clickDes)="saveJInfo($event)" ></app-t0807>-->
+  <app-t0807 age="21" name="Camila" description="UPB Student" (clickDes)="saveJInfo($event)" ></app-t0807>
 
 
 <div *ngFor="let person of persons">
@@ -20,4 +20,11 @@
 <app-prod1> </app-prod1>
 <app-prod3> </app-prod3>
 
-<app-ad1></app-ad1>
+<app-ad1></app-ad1>-->
+
+<h3> PIPES </h3>
+<p> {{ persons | json }}</p>
+<p> {{ 'camila' | uppercase }}</p>
+<p> {{ 'CAMILA' | lowercase }}</p>
+<p> {{ '08/08/2020' | date: "MM/dd/yy" }}</p>
+<p> {{ 'Camila' | test }}</p>
