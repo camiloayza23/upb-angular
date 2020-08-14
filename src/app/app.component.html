@@ -27,5 +27,13 @@
 <p> {{ 'camila' | uppercase }}</p>
 <p> {{ 'CAMILA' | lowercase }}</p>
 <p> {{ '08/08/2020' | date: "MM/dd/yy" }}</p>
+
+VALUE: <input type='text' [(ngModel)]="auxNumber">
+EXPONENT: <input type='text' [(ngModel)]="auxExpo">
 <p> {{ 'Camila' | test }}</p>
-<p> {{ 2 | expo:3 }} </p>
+<p> {{ auxNumber | expo:auxExpo : 'Hola' }} </p>
+
+<p> PURE {{numbers | pure }} </p>
+<p> IMPURE {{numbers | impure }} </p>
+
+<button (click)="numbers.push(4)"> Add </button>

@@ -10,6 +10,7 @@ export class AppComponent implements OnInit{
   title = 'curso-angular';
 
   sw = true;
+  numbers = [1,2,3,4,5,6,7,8,9,10];
   persons = [
     {
       name:"Isabel",
@@ -37,6 +38,9 @@ export class AppComponent implements OnInit{
     }
   ]
 
+  auxNumber : number = 2;
+  auxExpo : number = 3;
+
   ngOnInit(){
 
 
@@ -49,6 +53,9 @@ export class AppComponent implements OnInit{
     const aux = fromEvent(document, 'mousemove');
 
     aux.subscribe((s:any) => console.log('event: ', s.clientX + ', ' +s.clientY));*/
+
+    console.log('PURA '+this.suma(2,2));
+    console.log('IMPURA '+this.impura(2,2))
   }
   saveClickChild(event){
     console.log('EVENT CHILD: ', event);
@@ -58,5 +65,16 @@ export class AppComponent implements OnInit{
     console.log('EVENT JSON: ', event);
   }
   
+  suma(a:number,b:number){
+    return a+b;
+    // Va a tener la misma salida siempre
+    //FUNCION PURA
+  }
+
+  impura(a:number,b:number){
+    return a+b + Math.random();
+    // Va a tener la misma salida siempre
+    //FUNCION PURA
+  }
 
 }
