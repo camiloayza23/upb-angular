@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { from, fromEvent } from 'rxjs';
 
 @Component({
@@ -37,6 +37,10 @@ export class AppComponent implements OnInit{
       enable:false
     }
   ]
+
+  @HostListener('window:resize',['$event']) onResize(event){
+    console.log('WINDOWS RESIZE ',event.target.innerWidth);
+  }
 
   auxNumber : number = 2;
   auxExpo : number = 3;

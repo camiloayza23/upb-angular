@@ -20,7 +20,7 @@
 <app-prod1> </app-prod1>
 <app-prod3> </app-prod3>
 
-<app-ad1></app-ad1>-->
+<app-ad1></app-ad1>
 
 <h3> PIPES </h3>
 <p> {{ persons | json }}</p>
@@ -31,13 +31,13 @@
 VALUE: <input type='text' [(ngModel)]="auxNumber">
 EXPONENT: <input type='text' [(ngModel)]="auxExpo">
 <p> {{ 'Camila' | test }}</p>
-<p> {{ auxNumber | expo:auxExpo : 'Hola' }} </p>
+<p> {{ auxNumber | expo:auxExpo : 'Hola' }} </p>-->
 
 <p> PURE {{numbers | pure }} </p>
 <p> IMPURE {{numbers | impure }} </p>
 
 <button (click)="numbers.push(4)"> Add </button>
 
-<div appNgColor> 
+<div [appNgColor]="'green'" [secondcolor]=""'red'"> 
   Cami
 </div>

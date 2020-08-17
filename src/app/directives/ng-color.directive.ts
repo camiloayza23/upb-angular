@@ -5,18 +5,19 @@ import { Directive, ElementRef, Input, Output, HostListener } from '@angular/cor
 })
 export class NgColorDirective {
 
-  @Input()
+  @Input('appNgColor') color:string;
+  @Input() secondcolor:string;
 
   @Output()
 
   @HostListener('mouseenter') onMouseEnter(){
     console.log('MOUSE ENTER');
-    this.changeColor('red');
+    this.changeColor(this.color);
   }
 
   @HostListener('mouseleave') onMouseLeave(){
     console.log('MOUSE LEAVE');
-    this.changeColor('yell');
+    this.changeColor(this.secondcolor);
   }
 
   constructor( private el:ElementRef) { 
