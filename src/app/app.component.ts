@@ -8,7 +8,8 @@ import { from, fromEvent } from 'rxjs';
 })
 export class AppComponent implements OnInit{
   title = 'curso-angular';
-
+  name='Camila';
+  lastName='Loayza';
   sw = true;
   numbers = [1,2,3,4,5,6,7,8,9,10];
   persons = [
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit{
   auxExpo : number = 3;
 
   ngOnInit(){
+  
 
 
     //Convertir datos a observables

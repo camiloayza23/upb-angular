@@ -38,6 +38,8 @@ EXPONENT: <input type='text' [(ngModel)]="auxExpo">
 
 <button (click)="numbers.push(4)"> Add </button>
 
-<div [appNgColor]="'green'" [secondcolor]=""'red'"> 
+<!--<div [appNgColor]="'green'" [secondcolor]="'red'"> 
   Cami
-</div>
+</div>-->
+<button (click)="name='maria'; lastName='gutierrez';"> change name and last name</button>
+<app-test [name]="name" [lastName]="lastName"> </app-test>

@@ -15,8 +15,6 @@ import { PurePipe } from './pipes/pure.pipe';
 import { ImpurePipe } from './pipes/impure.pipe';
 import { NgColorDirective } from './directives/ng-color.directive';
 
-
-
 @NgModule({
   declarations: [
     //Componentes directivas
