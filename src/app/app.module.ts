@@ -15,6 +15,8 @@ import { PurePipe } from './pipes/pure.pipe';
 import { ImpurePipe } from './pipes/impure.pipe';
 import { NgColorDirective } from './directives/ng-color.directive';
 import { NgFocusDirective } from './directives/ng-focus.directive';
+import { PedidosyaComponent } from './components/pedidosya/pedidosya.component';
+import { TipoPipe } from './pipes/tipo.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { NgFocusDirective } from './directives/ng-focus.directive';
     PurePipe,
     ImpurePipe,
     NgColorDirective,
-    NgFocusDirective
+    NgFocusDirective,
+    PedidosyaComponent,
+    TipoPipe
   ],
   imports: [
     //Modulos dentro de este modulo
