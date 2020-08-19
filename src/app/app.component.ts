@@ -31,7 +31,7 @@ export class AppComponent  implements OnInit, DoCheck{
   }
 
   ngDoCheck(){
-    
+    this.i=0;
     for(let pedido of this.pedidos){
       this.i += pedido.stock;
     }

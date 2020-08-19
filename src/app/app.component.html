@@ -12,10 +12,10 @@
       <div *ngIf="pedido.stock > 0">
         <button (click)="pedido.stock = pedido.stock-1;"> PEDIR </button>
       </div>
-    </div>
-    
+    </div>  
   </div>
 </div>
+
 <h2> INTERNACIONALES </h2>
 <div *ngFor="let pedido of pedidos">
   <div [ngStyle]="{'background': pedido.stock == 0 ? 'red' : 'orange'}">
