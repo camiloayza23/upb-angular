@@ -21,14 +21,19 @@ export class AppComponent  implements OnInit, DoCheck{
     {nombre: "fricase", stock: 33, precio: 47, tipo: "nacional"},
     {nombre: "sushi", stock: 75, precio: 5, tipo: "internacional"}
   ]
-  
 
+  count(){
+    
+  }
 
   ngOnInit(){
-
+   
   }
 
   ngDoCheck(){
-
+    
+    for(let pedido of this.pedidos){
+      this.i += pedido.stock;
+    }
   }
 }

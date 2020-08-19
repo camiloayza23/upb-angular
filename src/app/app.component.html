@@ -1,10 +1,16 @@
+<h1> PEDIDOS YA </h1>
+<p> TOTAL STOCK: {{i}} </p>
+<div *ngIf="i == 0" [ngStyle]="{'background': 'DarkOliveGreen'}">
+  <p style="padding: 10px;"><strong> V E N D I S T E  T O D O </strong></p>
+</div>
+
 <h2> NACIONAL </h2>
 <div *ngFor="let pedido of pedidos">
   <div [ngStyle]="{'background': pedido.stock == 0 ? 'red' : 'orange'}">
     <div *ngIf="pedido.tipo == 'nacional'">
       <app-pedidosya [nombre]="pedido.nombre" [stock]="pedido.stock" [precio]="pedido.precio" [tipo]="pedido.tipo"> </app-pedidosya>
       <div *ngIf="pedido.stock > 0">
-        <button > PEDIDO </button>
+        <button (click)="pedido.stock = pedido.stock-1;"> PEDIR </button>
       </div>
     </div>
     
@@ -16,7 +22,7 @@
     <div *ngIf="pedido.tipo == 'internacional'">
       <app-pedidosya [nombre]="pedido.nombre" [stock]="pedido.stock" [precio]="pedido.precio" [tipo]="pedido.tipo"> </app-pedidosya>
       <div *ngIf="pedido.stock > 0">
-        <button > PEDIDO </button>
+        <button (click)="pedido.stock = pedido.stock-1;"> PEDIR </button>
       </div>
     </div>
   </div>

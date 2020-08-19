@@ -5,7 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TipoPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
+  transform(value: any, tipe: any): any {
+    if(tipe == "internacional") {
+      return value + " $"
+    } else {
+      return value + " Bs"
+    }
     return null;
   }
 
