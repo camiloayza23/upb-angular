@@ -15,6 +15,10 @@ import { PurePipe } from './pipes/pure.pipe';
 import { ImpurePipe } from './pipes/impure.pipe';
 import { NgColorDirective } from './directives/ng-color.directive';
 import { NgFocusDirective } from './directives/ng-focus.directive';
+import { AppRoutingModule } from './app-routing.module';
+import { AdminComponent } from './components/admin/admin.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import { NgFocusDirective } from './directives/ng-focus.directive';
     PurePipe,
     ImpurePipe,
     NgColorDirective,
-    NgFocusDirective
+    NgFocusDirective,
+    AdminComponent,
+    HomeComponent,
+    AboutComponent
   ],
   imports: [
     //Modulos dentro de este modulo
@@ -36,7 +43,8 @@ import { NgFocusDirective } from './directives/ng-focus.directive';
     PersonaModule,
     ProductoModule,
     AdminModule,
-    UserModule
+    UserModule,
+    AppRoutingModule
   ],
   providers: [
     //Servicios
