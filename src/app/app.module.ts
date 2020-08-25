@@ -5,11 +5,6 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AdminComponent } from './components/admin/admin.component';
-import { HomeComponent } from './components/home/home.component';
-import { AboutComponent } from './components/about/about.component';
-import { Home1Component } from './components/home1/home1.component';
-import { Home2Component } from './components/home2/home2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 
@@ -17,12 +12,7 @@ import { MatSliderModule } from '@angular/material/slider';
 @NgModule({
   declarations: [
     //Componentes directivas
-    AppComponent,
-    AdminComponent,
-    HomeComponent,
-    AboutComponent,
-    Home1Component,
-    Home2Component
+    AppComponent
   ],
   imports: [
     //Modulos dentro de este modulo
