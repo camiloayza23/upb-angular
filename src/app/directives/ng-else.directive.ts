@@ -1,10 +1,24 @@
-import { Directive } from '@angular/core';
+import { Directive, TemplateRef, ViewContainerRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appNgElse]'
+  selector: '[ngElse]'
 })
-export class NgElseDirective {
+export class NgElseDirective  implements OnInit{
 
-  constructor() { }
+  @Input () 
+  set ngElse(condition:boolean){
+    if(condition){
+      this.viewContainer.clear();
+    } else {
+      this.viewContainer.createEmbeddedView(this.templateRef);
+    }
+  }
 
+  constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef) { }
+
+  // ENTRADAS PARA UNA DIRECTIVA ESTRUCTURAL
+
+  ngOnInit(){
+    
+  }
 }

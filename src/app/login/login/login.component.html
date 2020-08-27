@@ -1,19 +1,8 @@
   
 <p>login works!</p>
 
+<button (click)="sw = !sw;"> SW</button>
+
+<p *ngElse="sw"> {{sw}} </p> 
 
 <button routerLink="/pages">LOGIN</button>
-
-<!--<div #test class="class1 class2" id="test1"> HOLA </div>
-
-<button (click)="sw = !sw"> SW </button>
-<div *ngIf="sw else esFalso"> es verdad</div>
-<p> {{test.id}} </p>
-
-<ng-template #esFalso>
-<p> ES FALSO </p>
-</ng-template>-->
-
-<ng-container *ngFor="let item of [1,2,3,4,5,6]"> 
-  <p> ITEM </p>
-</ng-container>
