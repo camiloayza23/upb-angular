@@ -11,6 +11,7 @@ import { HomeModule } from './pages/home/home.module';
 import { AdminModule } from './pages/admin/admin.module';
 import { ListModule } from './pages/list/list.module';
 
+
 @NgModule({
   declarations: [
     //Componentes directivas
@@ -29,6 +30,7 @@ import { ListModule } from './pages/list/list.module';
   ],
   providers: [
     //Servicios
+  
   ],
   bootstrap: [AppComponent]
 })
