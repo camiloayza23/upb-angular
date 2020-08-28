@@ -7,14 +7,17 @@ import { ProductService } from '../../../services/product.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    products = [
-    
-  ];
+    products = [];
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe( res => console.log());
+    this.productService.getProducts().subscribe(res => {
+      console.log('RES',res)
+      console.log('RESPUESTA', Object.entries(res));
+
+      Object.entries(res).map(p => this.products.push(p[1]));
+    });
   }
 
 }
