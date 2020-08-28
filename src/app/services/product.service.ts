@@ -1,41 +1,13 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable() 
 export class ProductService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
   
-  public getProducts() : any[] {
-    return [
-      {
-      description: 'aaaaa',
-      imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-      ownerId: 1,
-      price: 12,
-      title: 'saltenhas'
-    },
-    {
-      description: 'aaaaa',
-      imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-      ownerId: 1,
-      price: 12,
-      title: 'saltenhas'
-    },
-    {
-      description: 'aaaaa',
-      imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-      ownerId: 1,
-      price: 12,
-      title: 'saltenhas'
-    },
-    {
-      description: 'aaaaa',
-      imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-      ownerId: 1,
-      price: 12,
-      title: 'saltenhas'
-    }
-    ]
+  public getProducts() : Observable<any> {
+    return this.http.get('https://camila-angular.firebaseio.com/products.json');
   }
 }
