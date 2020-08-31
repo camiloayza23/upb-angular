@@ -1,1 +1,20 @@
 <p> Admin works! </p>
+
+<!--FORMULARIO REACTIVO
+<input type="text" [formControl]="nameControl">
+<button (click)="onEnviar()">Enviar</button> 
+
+description:'',
+      imageUrl:'',
+      ownerId:'',
+      price: '',
+      title:''-->
+<form [formGroup]="productForm" style="display: flex; flex-direction: column; width: 90%;">
+    <input formControlName="description" type="text">
+    <input formControlName="imageUrl" type="text">
+    <input formControlName="ownerId" type="text">
+    <input formControlName="price" type="text">
+    <input formControlName="title" type="text">
+
+    <button (click)="onEnviar2()"> SEND </button>
+</form>

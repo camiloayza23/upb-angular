@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ implements OnInit {
   password = '';
   sw = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +25,7 @@ implements OnInit {
 
   onLogin2(form):void{
     console.log('FORM:',form.value);
+    this.router.navigate(['/pages']);
   }
 
 }
