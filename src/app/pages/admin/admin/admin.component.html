@@ -11,10 +11,21 @@ description:'',
       title:''-->
 <form [formGroup]="productForm" style="display: flex; flex-direction: column; width: 90%;">
     <input formControlName="description" type="text">
+    <div *ngIf="productForm.get('description').invalid && (productForm.get('description').touched || productForm.get('description').dirty)" class="alert alert-danger">
+        <div *ngIf="productForm.get('description').errors.required">
+            name
+        </div>
+        <div *ngIf="productForm.get('description').errors.minlength">
+            4 characteres 
+        </div>
+    </div>
     <input formControlName="imageUrl" type="text">
     <input formControlName="ownerId" type="text">
     <input formControlName="price" type="text">
     <input formControlName="title" type="text">
-
+    
     <button (click)="onEnviar2()"> SEND </button>
 </form>
+
+    
+
