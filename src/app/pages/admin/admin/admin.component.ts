@@ -32,7 +32,13 @@ export class AdminComponent implements OnInit {
 
   onEnviar2():void{
     console.log('VALOR', this.productForm.value);
-    this.productService.addProducts(this.productForm.value).subscribe(res => console.log('RES:',res));
+    this.productService.addProducts(this.productForm.value).subscribe(res => {
+      console.log('RESP: ', res);
+      },
+      err => {
+        console.log('ERROR DE SERVIDOR');
+      }
+    );
   }
 
 }
