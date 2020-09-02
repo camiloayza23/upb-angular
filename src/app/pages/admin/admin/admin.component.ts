@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { ProductService } from 'src/app/services/product.service';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -10,6 +11,8 @@ import { Subscription } from 'rxjs';
 })
 export class AdminComponent implements OnInit {
   productSubs: Subscription;
+  productSubs2: Subscription;
+  products = [];
   productForm : FormGroup;
   //nameControl = new FormControl();
 
@@ -23,6 +26,13 @@ export class AdminComponent implements OnInit {
       ownerId:'',
       price: '',
       title:''
+    });
+
+    this.productSubs2 = this.productService.getProducts().subscribe(res => {
+      console.log('RES',res)
+      console.log('RESPUESTA', Object.entries(res));
+
+      Object.entries(res).map(p => this.products.push(p[1]));
     });
   }
 
@@ -44,6 +54,11 @@ export class AdminComponent implements OnInit {
 
   ngOnDestroy():void {
     this.productSubs ? this.productSubs.unsubscribe() : '';
+    this.productSubs2 ? this.productSubs2.unsubscribe() : '';
   }
 
+}
+
+export class SidenavAutosizeExample {
+  showFiller = false;
 }

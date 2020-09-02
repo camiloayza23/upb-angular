@@ -8,7 +8,7 @@ description:'',
       imageUrl:'',
       ownerId:'',
       price: '',
-      title:''-->
+      title:''
 <form [formGroup]="productForm" style="display: flex; flex-direction: column; width: 90%;">
     <input formControlName="description" type="text">
     <div *ngIf="productForm.get('description').invalid && (productForm.get('description').touched || productForm.get('description').dirty)" class="alert alert-danger">
@@ -25,7 +25,58 @@ description:'',
     <input formControlName="title" type="text">
     
     <button (click)="onEnviar2()"> SEND </button>
-</form>
+</form>-->
 
+<mat-drawer-container autosize>
+    <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
+        <form [formGroup]="productForm" style="display: flex; flex-direction: column; width: 90%;">
+            <input formControlName="description" type="text">
+            <div *ngIf="productForm.get('description').invalid && (productForm.get('description').touched || productForm.get('description').dirty)" class="alert alert-danger">
+                <div *ngIf="productForm.get('description').errors.required">
+                    name
+                </div>
+                <div *ngIf="productForm.get('description').errors.minlength">
+                    4 characteres 
+                </div>
+            </div>
+            <input formControlName="imageUrl" type="text">
+            <input formControlName="ownerId" type="text">
+            <input formControlName="price" type="text">
+            <input formControlName="title" type="text">
+            
+            <button (click)="onEnviar2()"> SEND </button>
+        </form>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+      </button>
+    </div>
+  
     
+    <div class="row">
+        <div *ngFor="let product of products"
+        class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" style="padding:50px; display:flex;">
+        
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>{{product.title}}</mat-card-title>
+                <mat-card-subtitle>{{product.price}} Bs.</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="product.imageUrl" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                    {{product.description}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>Edit</button>
+                <button mat-button>Delete</button>
+            </mat-card-actions>
+        </mat-card>
+        
+    </div>
+</div>
 
+</mat-drawer-container>
