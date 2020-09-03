@@ -12,6 +12,8 @@ import { ProductService } from '../../../services/product.service';
 export class AdminComponent implements OnInit {
   productSubs: Subscription;
   productSubs2: Subscription;
+  productDelete: Subscription;
+  productUpdate: Subscription;
   products = [];
   productForm : FormGroup;
   idEdit:any;
@@ -41,8 +43,7 @@ export class AdminComponent implements OnInit {
 
   onDelete(id: any) :void{
     console.log('ID',id);
-    this.productService.deleteProducts(id).subscribe(res => {
-      console.log('RES:',res);
+    this.productDelete = this.productService.deleteProducts(id).subscribe(res => {
       this.loadProducts();
     });
   }
@@ -63,8 +64,8 @@ export class AdminComponent implements OnInit {
   }
 
   onUpdateProduct():void{
-    this.productService.updateProducts(this.idEdit, this.productForm.value).subscribe(res => {
-      console.log('RESP: ', res);
+    this.productUpdate = this.productService.updateProducts(this.idEdit, this.productForm.value).subscribe(res => {
+      this.loadProducts();
       },
       err => {
         console.log('ERROR DE SERVIDOR');
@@ -91,6 +92,8 @@ export class AdminComponent implements OnInit {
   ngOnDestroy():void {
     this.productSubs ? this.productSubs.unsubscribe() : '';
     this.productSubs2 ? this.productSubs2.unsubscribe() : '';
+    this.productDelete ? this.productDelete.unsubscribe() : '';
+    this.productUpdate ? this.productUpdate.unsubscribe() : '';
   }
 
 }
