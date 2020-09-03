@@ -31,8 +31,9 @@ export class AdminComponent implements OnInit {
    
   }
 
-  loadProducts() : void{
-     this.productSubs2 = this.productService.getProducts().subscribe(res => {
+  loadProducts(): void {
+    this.products = [];
+    this.productSubs2 = this.productService.getProducts().subscribe(res => {
       Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
     });
   }

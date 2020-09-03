@@ -16,6 +16,7 @@ export class ProductService {
   }
 
   public deleteProducts(id:string) : Observable<any> {
-    return this.http.delete('https://camila-angular.firebaseio.com/products/${id}.json');
+    return this.http.delete(`https://camila-angular.firebaseio.com/products/${id}.json`);
   }
+
 }
