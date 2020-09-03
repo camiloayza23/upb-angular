@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ProductService } from 'src/app/services/product.service';
 import { Subscription } from 'rxjs';
+import { ProductService } from '../../../services/product.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
   //nameControl = new FormControl();
 
   constructor(private formBuilder: FormBuilder,
-              private productService: ProductService) { }
+              private productService: ProductService ) { }
 
   ngOnInit() {
     this.productForm = this.formBuilder.group({
