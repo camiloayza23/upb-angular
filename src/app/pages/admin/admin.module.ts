@@ -9,6 +9,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ProductService } from '../../services/product.service';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProductService } from '../../services/product.service';
     HttpClientModule,
     MatSidenavModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers:[
     ProductService

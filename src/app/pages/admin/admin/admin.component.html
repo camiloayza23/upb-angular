@@ -30,7 +30,10 @@ description:'',
 <mat-drawer-container autosize>
     <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
         <form [formGroup]="productForm" style="display: flex; flex-direction: column; width: 90%;">
-            <input formControlName="description" type="text">
+            <mat-form-field appearance="legacy">
+              <mat-label>Description</mat-label>
+              <input matInput formControlName="description" type="text" placeholder="Description">
+            </mat-form-field>
             <div *ngIf="productForm.get('description').invalid && (productForm.get('description').touched || productForm.get('description').dirty)" class="alert alert-danger">
                 <div *ngIf="productForm.get('description').errors.required">
                     name
@@ -39,12 +42,27 @@ description:'',
                     4 characteres 
                 </div>
             </div>
-            <input formControlName="imageUrl" type="text">
-            <input formControlName="ownerId" type="text">
-            <input formControlName="price" type="text">
-            <input formControlName="title" type="text">
-            
+            <mat-form-field appearance="legacy">
+              <mat-label>ImageUrl</mat-label>
+              <input matInput formControlName="imageUrl" type="text" placeholder="ImageUrl">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy">
+              <mat-label>Owner Id</mat-label>
+              <input matInput formControlName="ownerId" type="text" placeholder="ownerId">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy">
+              <mat-label>Price</mat-label>
+              <input matInput formControlName="price" type="text" placeholder="price">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy">
+              <mat-label>Title</mat-label>
+              <input matInput formControlName="title" type="text" placeholder="title">
+            </mat-form-field>
             <button (click)="onEnviar2()"> SEND </button>
+            <button (click)="onUpdateProduct()"> UPDATE </button>
         </form>
     </mat-drawer>
   
@@ -71,7 +89,7 @@ description:'',
                 </p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button>Edit</button>
+                <button mat-button (click)="onEdit(product)" (click)="drawer.toggle()">Edit</button>
                 <button mat-button (click)="onDelete(product.id)">Delete</button>
             </mat-card-actions>
         </mat-card>

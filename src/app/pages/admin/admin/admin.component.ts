@@ -14,6 +14,7 @@ export class AdminComponent implements OnInit {
   productSubs2: Subscription;
   products = [];
   productForm : FormGroup;
+  idEdit:any;
   //nameControl = new FormControl();
 
   constructor(private formBuilder: FormBuilder,
@@ -44,6 +45,31 @@ export class AdminComponent implements OnInit {
       console.log('RES:',res);
       this.loadProducts();
     });
+  }
+
+  onEdit(product):void {
+    console.log('A', product);
+    this.productForm.patchValue({
+      description: product.description,
+      imageUrl: product.imageUrl,
+      ownerId: product.ownerId,
+      price: product.price,
+      title: product.title
+
+    });
+
+    this.idEdit = product.id;
+    // PATCHVALUE SETVALUE, setvalue hay que enviar pedacitos si o si
+  }
+
+  onUpdateProduct():void{
+    this.productService.updateProducts(this.idEdit, this.productForm.value).subscribe(res => {
+      console.log('RESP: ', res);
+      },
+      err => {
+        console.log('ERROR DE SERVIDOR');
+      }
+    );
   }
 
   /*onEnviar():void{
