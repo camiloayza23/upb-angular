@@ -19,7 +19,7 @@ export class ProductService {
     return this.http.delete(`https://camila-angular.firebaseio.com/products/${id}.json`);
   }
 
-  public updateProducts(product:any, id:any) : Observable<any>{
+  public updateProducts(id:any, product:any) : Observable<any>{
     return this.http.put(`https://camila-angular.firebaseio.com/products/${id}.json`, product);
   }
 
