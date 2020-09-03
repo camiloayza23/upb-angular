@@ -14,4 +14,8 @@ export class ProductService {
   public addProducts(product:any) : Observable<any> {
     return this.http.post('https://camila-angular.firebaseio.com/products.json',product);
   }
+
+  public deleteProducts(id:string) : Observable<any> {
+    return this.http.delete('https://camila-angular.firebaseio.com/products/${id}.json');
+  }
 }

@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
               private productService: ProductService ) { }
 
   ngOnInit() {
+    this.loadProducts();
     this.productForm = this.formBuilder.group({
       description:['',[Validators.required, Validators.minLength(3)]],
       imageUrl:'',
@@ -27,12 +28,20 @@ export class AdminComponent implements OnInit {
       price: '',
       title:''
     });
+   
+  }
 
-    this.productSubs2 = this.productService.getProducts().subscribe(res => {
-      console.log('RES',res)
-      console.log('RESPUESTA', Object.entries(res));
+  loadProducts() : void{
+     this.productSubs2 = this.productService.getProducts().subscribe(res => {
+      Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
+    });
+  }
 
-      Object.entries(res).map(p => this.products.push(p[1]));
+  onDelete(id: any) :void{
+    console.log('ID',id);
+    this.productService.deleteProducts(id).subscribe(res => {
+      console.log('RES:',res);
+      this.loadProducts();
     });
   }
 
