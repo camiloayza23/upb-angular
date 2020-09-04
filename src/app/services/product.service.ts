@@ -8,11 +8,11 @@ export class ProductService {
   constructor(private http: HttpClient) { }
   
   public getProducts() : Observable<any> {
-    return this.http.get('https://camila-angular.firebaseio.com/products.json');
+    return this.http.get('https://super-ticket-test.firebaseio.com/concerts.json');
   }
 
   public addProducts(product:any) : Observable<any> {
-    return this.http.post('https://camila-angular.firebaseio.com/products.json',product);
+    return this.http.post('https://super-ticket-test.firebaseio.com/concerts.json',product);
   }
 
   public deleteProducts(id:string) : Observable<any> {
