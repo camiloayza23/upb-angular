@@ -7,20 +7,19 @@ export class ConcertServiceService {
 
    constructor(private http: HttpClient) { }
   
-  public getProducts() : Observable<any> {
+  public getConcerts() : Observable<any> {
     return this.http.get('https://super-ticket-test.firebaseio.com/concerts.json');
   }
 
-  public addProducts(product:any) : Observable<any> {
-    return this.http.post('https://super-ticket-test.firebaseio.com/concerts.json',product);
+  public addConcert(concert:any) : Observable<any> {
+    return this.http.post('https://super-ticket-test.firebaseio.com/concerts.json',concert);
   }
 
-  //public deleteProducts(id:string) : Observable<any> {
-    // return this.http.delete(`https://camila-angular.firebaseio.com/products/${id}.json`);
-  //}
+  public deleteConcert(id:string) : Observable<any> {
+    return this.http.delete(`https://super-ticket-test.firebaseio.com/concerts/${id}.json`);
+  }
 
-  //public updateProducts(id:any, product:any) : Observable<any>{
-    // return this.http.put(`https://camila-angular.firebaseio.com/products/${id}.json`, product);
-  //}
-
+  public updateProducts(id:any, concert:any) : Observable<any>{
+    return this.http.put(`https://super-ticket-test.firebaseio.com/concerts/${id}.json`, concert);
+  }
 }

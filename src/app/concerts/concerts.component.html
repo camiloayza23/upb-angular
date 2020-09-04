@@ -1,3 +1,102 @@
-<p>
-concerts works!
-</p>
+<mat-drawer-container autosize>
+    <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
+        <form [formGroup]="concertForm" style="display: flex; flex-direction: column; width: 90%;">
+            <mat-form-field appearance="legacy">
+              <mat-label>Enable</mat-label>
+              <input matInput formControlName="enable" type="text" placeholder="Enable">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" type="text" placeholder="Name">
+            </mat-form-field>
+            <div *ngIf="concertForm.get('name').invalid && (concertForm.get('name').touched || concertForm.get('name').dirty)" class="alert alert-danger">
+                <div *ngIf="concertForm.get('name').errors.required">
+                    Name is a required field
+                </div>
+                <div *ngIf="concertForm.get('name').errors.minlength">
+                    3 characters minimum
+                </div>
+            </div>
+
+            <mat-form-field appearance="legacy">
+              <mat-label>Stock</mat-label>
+              <input matInput formControlName="stock" type="text" placeholder="Stock">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy">
+              <mat-label>Type</mat-label>
+              <input matInput formControlName="type" type="text" placeholder="Type">
+            </mat-form-field>
+
+            <div *ngIf="concertForm.get('type').invalid && (concertForm.get('type').touched || concertForm.get('type').dirty)" class="alert alert-danger">
+                <div *ngIf="concertForm.get('type').errors.required">
+                    Type is a required field
+                </div>
+            </div>
+
+            <mat-form-field appearance="legacy">
+              <mat-label>Url Image</mat-label>
+              <input matInput formControlName="urlImage" type="text" placeholder="Url Image">
+            </mat-form-field>
+            <button (click)="onAdd()"> CREATE </button>
+            <button (click)="onUpdate()"> UPDATE </button>
+        </form>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <button type="button" mat-button (click)="drawer.toggle()">
+        CREAR
+      </button>
+    </div>
+  
+    <h2 style="background: lightBlue; padding: 10px;"> NACIONAL </h2>
+    
+    <div class="row">
+        <div *ngFor="let concert of concerts">
+        <div *ngIf="concert.type == 'nacional'">
+            <mat-card  style="margin:50px;" class="example-card"  *ngIf="concert.type == 'nacional'" [ngStyle]="{'background': concert.stock == 0 ? 'red' : 'orange'}">
+                <mat-card-header>
+                    <mat-card-title>{{concert.name | uppercase }} </mat-card-title>
+                    <mat-card-subtitle>Stock: {{concert.stock}} </mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="concert.urlImage" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <p> {{concert.type}} </p>
+                    <p>  {{concert.enable}} </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="onEdit(concert)" (click)="drawer.toggle()">Edit</button>
+                    <button mat-button (click)="onDelete(concert.id)">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        </div>
+    </div>
+
+    <h2 style="background: lightBlue; padding: 10px;"> INTERNACIONAL </h2>
+    
+    <div class="row">
+        <div *ngFor="let concert of concerts" >
+        <div *ngIf="concert.type == 'internacional'" >
+            <mat-card  style="margin:50px;" class="example-card" [ngStyle]="{'background': concert.stock == 0 ? 'red' : 'orange'}">
+                <mat-card-header>
+                    <mat-card-title>{{concert.name | uppercase }} </mat-card-title>
+                    <mat-card-subtitle>Stock: {{concert.stock}} </mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="concert.urlImage" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <p> {{concert.type}} </p>
+                    <p>  {{concert.enable}} </p>
+                    
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="onEdit(concert)" (click)="drawer.toggle()">Edit</button>
+                    <button mat-button (click)="onDelete(concert.id)">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        </div>
+    </div>
+
+</mat-drawer-container>
