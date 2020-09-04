@@ -6,12 +6,15 @@ import { FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { ConcertsComponent } from './concerts/concerts.component';
+import { ConcertServiceService } from './services/concert-service.service';
 
 
 @NgModule({
   declarations: [
     //Componentes directivas
-    AppComponent
+    AppComponent,
+    ConcertsComponent
   ],
   imports: [
     //Modulos dentro de este modulo
@@ -23,7 +26,7 @@ import { MatSliderModule } from '@angular/material/slider';
   providers: [
     //Servicios
   
-  ],
+  ConcertServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
