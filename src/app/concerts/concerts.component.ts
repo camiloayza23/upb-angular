@@ -27,7 +27,7 @@ export class ConcertsComponent implements OnInit {
   ngOnInit() {
     this.loadConcerts();
     this.concertForm = this.formBuilder.group({
-      enable:'',
+      enable:null,
       name:['',[Validators.required, Validators.minLength(3)]],
       stock:'',
       type: ['',[Validators.required]],
@@ -64,6 +64,7 @@ export class ConcertsComponent implements OnInit {
 
   onUpdate():void{
     this.conUpdate = this.concertService.updateProducts(this.idEdit, this.concertForm.value).subscribe(res => {
+       console.log('RES',res);
       this.loadConcerts();
       },
       err => {
