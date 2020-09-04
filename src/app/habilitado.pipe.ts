@@ -7,9 +7,9 @@ export class HabilitadoPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if (value === "true") {
-      return 'Habilitado';
+      return 'Si';
     } else {
-      return 'Deshabilitado'
+      return 'No'
     }
   }
 
