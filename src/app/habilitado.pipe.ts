@@ -6,12 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class HabilitadoPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    if (value) {
+    if (value === "true") {
       return 'Habilitado';
     } else {
       return 'Deshabilitado'
     }
-    return null;
   }
 
 }

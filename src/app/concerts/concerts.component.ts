@@ -64,7 +64,6 @@ export class ConcertsComponent implements OnInit {
 
   onUpdate():void{
     this.conUpdate = this.concertService.updateProducts(this.idEdit, this.concertForm.value).subscribe(res => {
-       console.log('RES',res);
       this.loadConcerts();
       },
       err => {
