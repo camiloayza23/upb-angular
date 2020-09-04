@@ -53,49 +53,45 @@
     <h2 style="background: lightBlue; padding: 10px;"> NACIONAL </h2>
     
     <div class="row">
-        <div *ngFor="let concert of concerts">
-        <div *ngIf="concert.type == 'nacional'">
-            <mat-card  style="margin:50px;" class="example-card"  *ngIf="concert.type == 'nacional'" [ngStyle]="{'background': concert.stock == 0 ? 'red' : 'orange'}">
-                <mat-card-header>
-                    <mat-card-title>{{concert.name | uppercase }} </mat-card-title>
-                    <mat-card-subtitle>Stock: {{concert.stock}} </mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image [src]="concert.urlImage" alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                    <p> {{concert.type}} </p>
-                    <p>  {{concert.enable}} </p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button (click)="onEdit(concert)" (click)="drawer.toggle()">Edit</button>
-                    <button mat-button (click)="onDelete(concert.id)">Delete</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
+        <div *ngFor="let concert of nacional">
+              <mat-card  style="margin:50px;" class="example-card"  *ngIf="concert.type == 'nacional'" [ngStyle]="{'background': concert.stock == 0 ? 'red' : 'orange'}">
+                  <mat-card-header>
+                      <mat-card-title>{{concert.name | uppercase }} </mat-card-title>
+                      <mat-card-subtitle>Stock: {{concert.stock}} </mat-card-subtitle>
+                  </mat-card-header>
+                  <img mat-card-image [src]="concert.urlImage" alt="Photo of a Shiba Inu">
+                  <mat-card-content>
+                      <p> <strong> Tipo: </strong> {{concert.type | titlecase}} </p>
+                      <p> <strong> Habilitado: </strong>{{concert.enable | habilitado }} </p>
+                  </mat-card-content>
+                  <mat-card-actions>
+                      <button mat-button (click)="onEdit(concert)" (click)="drawer.toggle()">Edit</button>
+                      <button mat-button (click)="onDelete(concert.id)">Delete</button>
+                  </mat-card-actions>
+              </mat-card>
         </div>
     </div>
 
     <h2 style="background: lightBlue; padding: 10px;"> INTERNACIONAL </h2>
     
     <div class="row">
-        <div *ngFor="let concert of concerts" >
-        <div *ngIf="concert.type == 'internacional'" >
-            <mat-card  style="margin:50px;" class="example-card" [ngStyle]="{'background': concert.stock == 0 ? 'red' : 'orange'}">
-                <mat-card-header>
-                    <mat-card-title>{{concert.name | uppercase }} </mat-card-title>
-                    <mat-card-subtitle>Stock: {{concert.stock}} </mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image [src]="concert.urlImage" alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                    <p> {{concert.type}} </p>
-                    <p>  {{concert.enable}} </p>
-                    
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button (click)="onEdit(concert)" (click)="drawer.toggle()">Edit</button>
-                    <button mat-button (click)="onDelete(concert.id)">Delete</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
+        <div *ngFor="let concert of internacional" >
+              <mat-card  style="margin:50px;" class="example-card" [ngStyle]="{'background': concert.stock == 0 ? 'red' : 'orange'}">
+                  <mat-card-header>
+                      <mat-card-title>{{concert.name | uppercase }} </mat-card-title>
+                      <mat-card-subtitle>Stock: {{concert.stock}} </mat-card-subtitle>
+                  </mat-card-header>
+                  <img mat-card-image [src]="concert.urlImage" alt="Photo of a Shiba Inu">
+                  <mat-card-content>
+                      <p> <strong> Tipo </strong> {{concert.type | titlecase}} </p>
+                      <p> <strong> Habilitado: </strong> {{concert.enable | habilitado}} </p>
+                      
+                  </mat-card-content>
+                  <mat-card-actions>
+                      <button mat-button (click)="onEdit(concert)" (click)="drawer.toggle()">Edit</button>
+                      <button mat-button (click)="onDelete(concert.id)">Delete</button>
+                  </mat-card-actions>
+              </mat-card>
         </div>
     </div>
 

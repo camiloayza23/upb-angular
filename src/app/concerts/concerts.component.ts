@@ -14,6 +14,10 @@ export class ConcertsComponent implements OnInit {
 
   concertForm : FormGroup;
   concerts = [];
+
+  nacional = [];
+  internacional = [];
+
   idEdit:string;
   conCreate: Subscription;
   conDelete: Subscription;
@@ -35,13 +39,14 @@ export class ConcertsComponent implements OnInit {
   loadConcerts(): void {
     this.concerts = [];
     this.conCreate = this.concertService.getConcerts().subscribe(res => {
-      Object.entries(res).map((c:any) => this.concerts.push({id: c[0], ...c[1]}))
-    })
+      Object.entries(res).map((c:any) => this.concerts.push({id: c[0], ...c[1]}));
+      this.nacional = this.concerts.filter(s => s.type === 'nacional');
+      this.internacional = this.concerts.filter(s => s.type === 'internacional');
 
+    })
   }
 
   onDelete(id: any) :void{
-    console.log('ID',id);
     this.conDelete = this.concertService.deleteConcert(id).subscribe(res => {
       this.loadConcerts();
     });
