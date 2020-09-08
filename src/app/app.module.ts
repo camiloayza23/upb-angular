@@ -10,7 +10,13 @@ import { MatSliderModule } from '@angular/material/slider';
 import { HomeModule } from './pages/home/home.module';
 import { AdminModule } from './pages/admin/admin.module';
 import { ListModule } from './pages/list/list.module';
+import { Routes, RouterModule } from '@angular/router';
 
+const routes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
+  {path: 'pages', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)}
+];
 
 @NgModule({
   declarations: [
@@ -26,12 +32,14 @@ import { ListModule } from './pages/list/list.module';
     MatSliderModule,
     HomeModule,
     AdminModule,
-    ListModule
+    ListModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     //Servicios
   
   ],
+  exports: [RouterModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
