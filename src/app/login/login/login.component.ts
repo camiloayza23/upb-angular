@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService  } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,23 +10,32 @@ import { Router } from '@angular/router';
 export class LoginComponent 
 
 implements OnInit {
-  username = '';
+  email = '';
   password = '';
   sw = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private authService: AuthService) {
+}
 
   ngOnInit(): void {
   }
 
-  onLogin():void{
-    console.log('USERNAME:',this.username);
-    console.log('PASSWORD:',this.password);
+  onLogin(form):void{
+    console.log('USERNAME:',form.value);
+    this.authService.onLogin(form.value).subscribe(
+      res => {
+        console.log('LOGIN RESPONSE: ', res);
+      },
+      err => {
+        console.log('LOGIN ERROR: '),err;
+      }
+    );
   }
 
-  onLogin2(form):void{
+  /*onLogin2(form):void{
     console.log('FORM:',form.value);
     this.router.navigate(['/pages']);
-  }
+  }*/
 
 }

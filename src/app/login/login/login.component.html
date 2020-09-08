@@ -1,5 +1,4 @@
   
-<p>login works!</p>
 <!--<div style="display: flex; flex-direction: column;">
     <form (ngSubmit)="onLogin2(form)" #form="ngForm">
         <input type="text" name="username" ngModel>
@@ -8,7 +7,7 @@
     </form>
 </div>-->
 
-<!--<button routerLink="/pages">LOGIN</button>-->
+<!--<button routerLink="/pages">LOGIN</button>
 
 <input type="text" required minlength="3" maxlength="5" ngModel #name="ngModel">
 <div *ngIf="name.invalid && (name.touched || name.dirty)" class="alert alert-danger">
@@ -21,4 +20,38 @@
     <div *ngIf="name.errors.maxlength">
         5 max
     </div>
-</div>
+</div>-->
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>LOGIN</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="display: flex; flex-direction: column;">
+        <form #form="ngForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="text" name="email" matInput ngModel #emailUI="ngModel" required>
+        </mat-form-field>
+        <div *ngIf="emailUI.invalid && (emailUI.touched || emailUI.dirty)" class="alert alert-danger">
+            <div *ngIf="emailUI.errors.required">
+                Email is required
+            </div>
+        </div>
+        
+        <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" name="password" matInput ngModel #passwordUI="ngModel" required>
+        </mat-form-field>  
+
+        <div *ngIf="passwordUI.invalid && (passwordUI.touched || passwordUI.dirty)" class="alert alert-danger">
+            <div *ngIf="passwordUI.errors.required">
+                Password is required
+            </div>
+        </div>      
+    </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [disabled]="form.invalid" (click)="onLogin(form)">Sign-in</button>
+    </mat-card-actions>
+  </mat-card>
+
