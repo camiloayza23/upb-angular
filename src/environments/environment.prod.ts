@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   app: {
-    apiBaseUrl: 'https://camila-angular.firebaseapp.com'
+    apiBaseUrl: 'https://camila-angular.firebaseio.com'
   },
   auth:{
     apiBaseUrl:'https://identitytoolkit.googleapis.com',

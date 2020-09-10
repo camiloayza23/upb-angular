@@ -10,9 +10,6 @@ import { AuthService  } from '../shared/services/auth.service';
 export class LoginComponent 
 
 implements OnInit {
-  email = '';
-  password = '';
-  sw = false;
 
   constructor(private router: Router,
     private authService: AuthService) {
@@ -37,10 +34,4 @@ implements OnInit {
       }
     );
   }
-
-  /*onLogin2(form):void{
-    console.log('FORM:',form.value);
-    this.router.navigate(['/pages']);
-  }*/
-
 }

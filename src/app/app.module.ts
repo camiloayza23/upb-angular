@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {AuthInterceptor} from './shared/interceptors/auth.interceptor';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -14,18 +15,23 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    //Componentes directivas
     AppComponent
   ],
   imports: [
-    //Modulos dentro de este modulo
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
-
-  exports: [RouterModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+}
