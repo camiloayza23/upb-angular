@@ -23,7 +23,12 @@ implements OnInit {
 
   onLogin(form):void{
     console.log('USERNAME:',form.value);
-    this.authService.onLogin(form.value).subscribe(
+
+    this.authService.onLogin({
+      email: form.value.email,
+      password: form.value.password,
+      returnSecureToken: true
+    }).subscribe(
       res => {
         console.log('LOGIN RESPONSE: ', res);
       },

@@ -2,15 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
-import { HomeModule } from './pages/home/home.module';
-import { AdminModule } from './pages/admin/admin.module';
-import { ListModule } from './pages/list/list.module';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -26,19 +20,11 @@ const routes: Routes = [
   imports: [
     //Modulos dentro de este modulo
     BrowserModule,
-    FormsModule,
-    AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
-    MatSliderModule,
-    HomeModule,
-    AdminModule,
-    ListModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [
-    //Servicios
-  
-  ],
+
   exports: [RouterModule],
   bootstrap: [AppComponent]
 })

@@ -4,11 +4,10 @@ import {CommonModule} from '@angular/common';
 import {AdminRoutingModule} from './admin-routing.module';
 import {AdminComponent} from './admin/admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../shared/services/product.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -20,7 +19,6 @@ import { MatInputModule } from '@angular/material/input';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatSidenavModule,
     MatButtonModule,
     MatCardModule,
