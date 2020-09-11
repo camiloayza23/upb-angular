@@ -36,7 +36,8 @@ export class AdminComponent implements OnInit {
 
   loadProducts(): void {
     this.products = [];
-    this.productSubs2 = this.productService.getProducts().subscribe(res => {
+    const idUser = localStorage.getItem('userId');
+    this.productSubs2 = this.productService.getProductsById(idUser).subscribe(res => {
       Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
     });
   }
@@ -64,7 +65,11 @@ export class AdminComponent implements OnInit {
   }
 
   onUpdateProduct():void{
-    this.productUpdate = this.productService.updateProducts(this.idEdit, this.productForm.value).subscribe(res => {
+    this.productUpdate = this.productService.updateProducts(
+        this.idEdit, 
+        {...this.productForm.value,
+        ownerId: localStorage.getItem('userId')
+      }).subscribe(res => {
       this.loadProducts();
       },
       err => {
@@ -80,7 +85,10 @@ export class AdminComponent implements OnInit {
 
   onEnviar2():void{
     console.log('VALOR', this.productForm.value);
-    this.productSubs = this.productService.addProducts(this.productForm.value).subscribe(res => {
+    this.productSubs = this.productService.addProducts({
+      ...this.productForm.value,
+      ownerId: localStorage.getItem('userId')
+    }).subscribe(res => {
       console.log('RESP: ', res);
       },
       err => {
