@@ -3,16 +3,18 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -24,6 +26,19 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((err: HttpErrorResponse) => {
+        if (err.status === 401){
+          this.handle401Error();
+        }
+        return throwError('Error')
+      })
+    );
+  }
+
+  private handle401Error(): Observable<any> {
+    this.authService.logout();
+    return throwError('ERROR 401');
+
   }
 }
