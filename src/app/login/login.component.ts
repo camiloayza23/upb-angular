@@ -28,6 +28,7 @@ implements OnInit {
     }).subscribe(
       res => {
         console.log('LOGIN RESPONSE: ', res);
+        this.router.navigate(['pages']);
       },
       err => {
         console.log('LOGIN ERROR: '),err;
