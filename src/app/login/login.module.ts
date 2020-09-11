@@ -8,7 +8,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {AuthService} from '../shared/services/auth.service';
 import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
@@ -30,9 +29,7 @@ const routes: Routes = [
     MatInputModule,
     RouterModule.forChild(routes)
   ],
-  providers: [
-    AuthService
-  ]
+  providers: []
 })
 export class LoginModule {
 }
