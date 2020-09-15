@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { ProductService } from '../../../shared/services/product.service';
+import { AuthService } from '../../shared/services/auth.service';
+import { ProductService } from '../../shared/services/product.service';
 
 
 @Component({
