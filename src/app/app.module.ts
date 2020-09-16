@@ -8,6 +8,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {AuthInterceptor} from './shared/interceptors/auth.interceptor';
 import {AuthGuard} from './shared/guards/auth.guard';
 import { AuthService } from './shared/services/auth.service';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import {metaReducers} from './core/meta';
+import {reducers} from './core';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
@@ -26,7 +32,11 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+
+    StoreModule.forRoot(reducers,{metaReducers}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({name:'Angular Course',logOnly: environment.production})
   ],
   providers: [
     AuthService,
