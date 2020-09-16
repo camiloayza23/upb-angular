@@ -1,22 +1,47 @@
-<div class="row">
-  <div *ngFor="let product of products"
-       class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" style="padding:50px; display:flex;">
 
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title>{{product.title}}</mat-card-title>
-        <mat-card-subtitle>{{product.price}} Bs.</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image [src]="product.imageUrl" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          {{product.description}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)="onBuy()">Comprar</button>
-      </mat-card-actions>
-    </mat-card>
+<mat-drawer-container autosize>
+  <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
+      <table>
+        <tr>
+          <td> NAME </td>
+          <td> PRICE </td>
+        </tr>
+        <tr *ngFor="let product of cart">
+          <td> {{ product.title }}</td>
+          <td> {{ product.price }}</td>
+        </tr>
+      </table>
+  </mat-drawer>
 
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
   </div>
-</div>
+
+  
+  <div class="row">
+    <div *ngFor="let product of products"
+         class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" style="padding:50px; display:flex;">
+  
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{product.title}}</mat-card-title>
+          <mat-card-subtitle>{{product.price}} Bs.</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="product.imageUrl" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            {{product.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="onBuy(product)">Comprar</button>
+        </mat-card-actions>
+      </mat-card>
+  
+    </div>
+  </div>
+
+
+</mat-drawer-container>

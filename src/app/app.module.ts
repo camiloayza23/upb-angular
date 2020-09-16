@@ -33,9 +33,10 @@ const routes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
-
+    //Consola
     StoreModule.forRoot(reducers,{metaReducers}),
     EffectsModule.forRoot([]),
+    // Google
     StoreDevtoolsModule.instrument({name:'Angular Course',logOnly: environment.production})
   ],
   providers: [

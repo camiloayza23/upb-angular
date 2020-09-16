@@ -6,6 +6,9 @@ import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductService } from '../../shared/services/product.service';
 import {Routes, RouterModule} from '@angular/router';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 const routes: Routes = [
   {path: '', component: HomeComponent}
@@ -19,6 +22,11 @@ const routes: Routes = [
     CommonModule,
     MatCardModule,
     MatButtonModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule.forChild(routes)
   ],
   providers: [

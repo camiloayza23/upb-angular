@@ -11,11 +11,20 @@ import { AddProduct } from './store/home.actions'
 })
 export class HomeComponent implements OnInit, OnDestroy {
   products = [];
+  cart = [];
   productSubs :Subscription;
+  homeSubs: Subscription;
   constructor(private store: Store<any>,
     private productService: ProductService) { }
 
   ngOnInit() {
+    this.homeSubs = this.store.select(s => s.home).subscribe(res => {
+      
+      this.cart = Object.assign([],res.items);
+      // Evitar el principio de inmutabilidad que nos devuelve el store
+      // JSON.parse({JSON.stringify(res)})
+    });
+
     this.productSubs = this.productService.getProducts().subscribe(res => {
       console.log('RES',res)
       console.log('RESPUESTA', Object.entries(res));
@@ -26,10 +35,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy():void {
     this.productSubs ? this.productSubs.unsubscribe() : '';
+    this.homeSubs ? this.homeSubs.unsubscribe() : '';
   }
 
-  onBuy(): void {
-    this.store.dispatch(AddProduct({product:'hola'}));
+  onBuy(product): void {
+    this.store.dispatch(AddProduct({product:Object.assign([],product)}));
   }
 
 }
