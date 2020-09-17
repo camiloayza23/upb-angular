@@ -13,9 +13,12 @@ import { ProductService } from '../shared/services/product.service';
 export class AdminComponent implements OnInit {
   productSubs: Subscription;
   productSubs2: Subscription;
-  productDelete: Subscription;
   productUpdate: Subscription;
   products = [];
+  
+  hot = [];
+  cold = [];
+
   productForm : FormGroup;
   idEdit:any;
   //nameControl = new FormControl();
@@ -40,13 +43,9 @@ export class AdminComponent implements OnInit {
     this.products = [];
     this.productSubs2 = this.productService.getProducts().subscribe(res => {
       Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
-    });
-  }
-
-  onDelete(id: any) :void{
-    console.log('ID',id);
-    this.productDelete = this.productService.deleteProducts(id).subscribe(res => {
-      this.loadProducts();
+      this.hot = this.products.filter(s => s.type === 'calor');
+      this.cold = this.products.filter(s => s.type === 'frio');
+      console.log(this.products);
     });
   }
 
@@ -79,30 +78,15 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  /*onEnviar():void{
-    console.log('VALOR', this.nameControl);
-    console.log('VALOR', this.nameControl.value);
-  }*/
-
-  onEnviar2():void{
-    console.log('VALOR', this.productForm.value);
-    this.productSubs = this.productService.addProducts({
-      ...this.productForm.value,
-      ownerId: this.authService.getUserId()
-    }).subscribe(res => {
-      console.log('RESP: ', res);
-      },
-      err => {
-        console.log('ERROR DE SERVIDOR');
-      }
-    );
-  }
 
   ngOnDestroy():void {
     this.productSubs ? this.productSubs.unsubscribe() : '';
     this.productSubs2 ? this.productSubs2.unsubscribe() : '';
-    this.productDelete ? this.productDelete.unsubscribe() : '';
     this.productUpdate ? this.productUpdate.unsubscribe() : '';
+  }
+
+  saveEvent(event):void {
+    console.log('SEND HELP',event);
   }
 
 }
@@ -110,3 +94,4 @@ export class AdminComponent implements OnInit {
 export class SidenavAutosizeExample {
   showFiller = false;
 }
+

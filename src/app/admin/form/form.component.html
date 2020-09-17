@@ -1,3 +1,41 @@
-<p>
-form works!
-</p>
+<form [formGroup]="productForm" style="display: flex; flex-direction: column; width: 90%;">
+    <mat-form-field appearance="legacy">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" type="text" placeholder="Name" required>
+    </mat-form-field>
+    <div *ngIf="productForm.get('name').invalid && (productForm.get('name').touched || productForm.get('name').dirty)" class="alert alert-danger">
+        <div *ngIf="productForm.get('name').errors.required">
+            Name is required
+        </div>
+        <div *ngIf="productForm.get('name').errors.minlength">
+            Min 3 characters are required
+        </div>
+    </div>
+    
+    <mat-form-field appearance="legacy">
+        <mat-label>Size</mat-label>
+        <input matInput formControlName="size" type="text" placeholder="size">
+    </mat-form-field>
+    
+    <mat-form-field appearance="legacy">
+        <mat-label>Stock</mat-label>
+        <input matInput formControlName="stock" type="text" placeholder="stock">
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type" type="text" placeholder="type" required>
+    </mat-form-field>
+    <div *ngIf="productForm.get('type').invalid && (productForm.get('type').touched || productForm.get('type').dirty)" class="alert alert-danger">
+        <div *ngIf="productForm.get('type').errors.required">
+            Type is required
+        </div>
+    </div>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>URL Image</mat-label>
+      <input matInput formControlName="urlImage" type="text" placeholder="URL Image">
+    </mat-form-field>
+    <button (click)="onEnviar2()"> SAVE </button>
+    <button (click)="onUpdateProduct()"> UPDATE </button>
+</form>

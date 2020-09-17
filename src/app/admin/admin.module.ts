@@ -11,6 +11,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Routes, RouterModule } from '@angular/router';
 import { CardComponent } from './card/card.component';
+import { FormComponent } from './form/form.component';
+import { HeaderComponent } from './header/header.component';
+import { SizePipe } from '../shared/size.pipe';
 
 const routes: Routes = [
   {path: '', component: AdminComponent}
@@ -19,7 +22,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AdminComponent,
-    CardComponent
+    CardComponent,
+    FormComponent,
+    HeaderComponent,
+    SizePipe
   ],
   imports: [
     CommonModule,

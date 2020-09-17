@@ -15,13 +15,10 @@ import { environment } from '../environments/environment';
 import {metaReducers} from './core/meta';
 import {reducers} from './core';
 import { AppRoutingModule } from './app-routing.module';
-import { FormComponent } from './form/form.component';
-import { HeaderComponent } from './header/header.component';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    FormComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

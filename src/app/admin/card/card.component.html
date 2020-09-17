@@ -1,3 +1,16 @@
-<p>
-card works!
-</p>
+<mat-card class="example-card" [ngStyle]="{'background': stock == 0 ? 'red' : 'orange'}">
+    <mat-card-header>
+      <mat-card-title>{{ name | uppercase }}</mat-card-title>
+      <mat-card-subtitle>{{ size }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ urlImage }}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>Name: {{ name | uppercase }}</p>
+      <p>Size: {{ size }}</p>
+      <p>Stock: {{stock}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button *ngIf="stock != 0" mat-button (click)="onEdit()" >Edit</button>
+        <button mat-button (click)="onDelete()">Delete</button>
+    </mat-card-actions>
+</mat-card>
