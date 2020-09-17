@@ -26,14 +26,14 @@
   
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title>{{product.title}}</mat-card-title>
-          <mat-card-subtitle>{{product.price}} Bs.</mat-card-subtitle>
+          <mat-card-title>{{product.name}}</mat-card-title>
+          <mat-card-subtitle>{{product.size}} Bs.</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="product.imageUrl" alt="Photo of a Shiba Inu">
+        <img mat-card-image [src]="product.urlImage" alt="Photo of a Shiba Inu">
         <mat-card-content>
-          <p>
-            {{product.description}}
-          </p>
+          <p>Name: {{product.name}}</p>
+          <p>Size: {{product.size}}</p>
+          <p>Stock: {{product.stock}}</p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button (click)="onBuy(product)">Comprar</button>

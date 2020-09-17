@@ -3,15 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   app: {
-    apiBaseUrl: 'https://camila-angular.firebaseio.com'
+    apiBaseUrl: 'https://amazzon-test.firebaseio.com/'
   },
   auth:{
     apiBaseUrl:'https://identitytoolkit.googleapis.com',
-    key:'AIzaSyDSJkn80iyWVkdhibnsDoT-j_0QoOwpEXo'
+    key:'AIzaSyA27IUPo8DG5PRSd3WTBckqnpjtrU0z-9U'
   }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

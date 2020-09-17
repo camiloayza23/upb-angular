@@ -16,21 +16,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.verifyLogged()) {
-      this.router.navigate(['pages']);
+      this.router.navigate(['admin']);
     }
   }
 
   onLogin(form: any): void {
-    console.log('FORM: ', form.value);
-
     this.authService.onLogin({
       email: form.value.email,
       password: form.value.password,
       returnSecureToken: true
     }).subscribe(
       res => {
-        console.log('LOGIN RESPONSE: ', res);
-        this.router.navigate(['pages']);
+        this.router.navigate(['admin']);
       },
       err => {
         console.log('LOGIN ERROR: ');

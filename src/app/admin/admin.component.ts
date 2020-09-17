@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../../shared/services/auth.service';
-import { ProductService } from '../../shared/services/product.service';
+import { AuthService } from '../shared/services/auth.service';
+import { ProductService } from '../shared/services/product.service';
 
 
 @Component({
@@ -38,8 +38,7 @@ export class AdminComponent implements OnInit {
 
   loadProducts(): void {
     this.products = [];
-    const idUser = this.authService.getUserId();
-    this.productSubs2 = this.productService.getProductsById(idUser).subscribe(res => {
+    this.productSubs2 = this.productService.getProducts().subscribe(res => {
       Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
     });
   }

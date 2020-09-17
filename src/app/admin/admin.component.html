@@ -1,32 +1,5 @@
 <p> Admin works! </p>
 
-<!--FORMULARIO REACTIVO
-<input type="text" [formControl]="nameControl">
-<button (click)="onEnviar()">Enviar</button> 
-
-description:'',
-      imageUrl:'',
-      ownerId:'',
-      price: '',
-      title:''
-<form [formGroup]="productForm" style="display: flex; flex-direction: column; width: 90%;">
-    <input formControlName="description" type="text">
-    <div *ngIf="productForm.get('description').invalid && (productForm.get('description').touched || productForm.get('description').dirty)" class="alert alert-danger">
-        <div *ngIf="productForm.get('description').errors.required">
-            name
-        </div>
-        <div *ngIf="productForm.get('description').errors.minlength">
-            4 characteres 
-        </div>
-    </div>
-    <input formControlName="imageUrl" type="text">
-    <input formControlName="ownerId" type="text">
-    <input formControlName="price" type="text">
-    <input formControlName="title" type="text">
-    
-    <button (click)="onEnviar2()"> SEND </button>
-</form>-->
-
 <mat-drawer-container autosize>
     <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
         <form [formGroup]="productForm" style="display: flex; flex-direction: column; width: 90%;">
@@ -74,20 +47,19 @@ description:'',
         
         <mat-card class="example-card">
             <mat-card-header>
-                <mat-card-title>{{product.title}}</mat-card-title>
-                <mat-card-subtitle>{{product.price}} Bs.</mat-card-subtitle>
+              <mat-card-title>{{product.name}}</mat-card-title>
+              <mat-card-subtitle>{{product.size}} Bs.</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image [src]="product.imageUrl" alt="Photo of a Shiba Inu">
+            <img mat-card-image [src]="product.urlImage" alt="Photo of a Shiba Inu">
             <mat-card-content>
-                <p>
-                    {{product.description}}
-                </p>
+              <p>Name: {{product.name}}</p>
+              <p>Size: {{product.size}}</p>
+              <p>Stock: {{product.stock}}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button (click)="onEdit(product)" (click)="drawer.toggle()">Edit</button>
-                <button mat-button (click)="onDelete(product.id)">Delete</button>
+              <button mat-button (click)="onBuy(product)">Comprar</button>
             </mat-card-actions>
-        </mat-card>
+          </mat-card>
         
     </div>
 </div>
