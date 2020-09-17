@@ -1,8 +1,8 @@
 <app-header></app-header>
 
 <mat-drawer-container autosize>
-    <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
-      <app-form> </app-form>
+    <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'"  [opened]="true">
+      <app-form [receive]="receive"> </app-form>
     </mat-drawer>
   
     <div class="example-sidenav-content">
@@ -19,15 +19,15 @@
     <div class="row">
       <div *ngFor="let product of hot"
       class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" style="padding:50px; display:flex;">
-        <app-card name="{{product.name}}" size="{{product.size | size }}" urlImage="{{product.urlImage}}" stock="{{product.stock}} " type="{{product.type}}" [product]="product"> </app-card>
+        <app-card (editPage)="saveEvent($event)" name="{{product.name}}" size="{{product.size | size }}" urlImage="{{product.urlImage}}" stock="{{product.stock}} " type="{{product.type}}" [product]="product"> </app-card>
       </div>
     </div>
     <h2 style="background: lightBlue; padding: 10px;"> COLD </h2>
     <div class="row">
       <div *ngFor="let product of cold"
         class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" style="padding:50px; display:flex;">
-          <app-card name="{{product.name}}" size="{{product.size | size}}" urlImage="{{product.urlImage}}" 
-          stock="{{product.stock}}" type="{{product.type}}" [product]="product" (editPage)="saveEvent($event)"> </app-card>
+          <app-card (editPage)="saveEvent($event)" name="{{product.name}}" size="{{product.size | size}}" urlImage="{{product.urlImage}}" 
+          stock="{{product.stock}}" type="{{product.type}}" [product]="product" > </app-card>
       </div>
     </div>
 

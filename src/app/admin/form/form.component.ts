@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
@@ -9,13 +9,16 @@ import { ProductService } from '../../shared/services/product.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnChanges {
+
+  @Input() receive:any;
 
   productSubs: Subscription;
   productSubs2: Subscription;
   productDelete: Subscription;
   productUpdate: Subscription;
   products = [];
+  form:any;
   
   hot = [];
   cold = [];
@@ -29,7 +32,6 @@ export class FormComponent implements OnInit {
               private authService: AuthService ) { }
 
   ngOnInit() {
-    this.loadProducts();
     this.productForm = this.formBuilder.group({
       name:['',[Validators.required, Validators.minLength(3)]],
       size:'',
@@ -37,48 +39,41 @@ export class FormComponent implements OnInit {
       type: ['',[Validators.required]],
       urlImage:''
     });
-   
-  }
+}
 
-  loadProducts(): void {
-    this.products = [];
-    this.productSubs2 = this.productService.getProducts().subscribe(res => {
-      Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
-      this.hot = this.products.filter(s => s.type === 'calor');
-      this.cold = this.products.filter(s => s.type === 'frio');
-      console.log(this.products);
-    });
-  }
-
-  onDelete(id: any) :void{
-    console.log('ID',id);
-    this.productDelete = this.productService.deleteProducts(id).subscribe(res => {
-      this.loadProducts();
-    });
-  }
-
-  onEdit(product):void {
-    console.log('A', product);
+  onEdit():void {
+    if(this.receive != null){
+    
     this.productForm.patchValue({
-      description: product.description,
-      imageUrl: product.imageUrl,
-      ownerId: product.ownerId,
-      price: product.price,
-      title: product.title
+      name: this.receive.name,
+      size: this.receive.size,
+      stock: this.receive.stock,
+      type: this.receive.type,
+      urlImage: this.receive.urlImage
 
     });
 
-    this.idEdit = product.id;
-    // PATCHVALUE SETVALUE, setvalue hay que enviar pedacitos si o si
-  }
+    this.idEdit = this.receive.id;
+  }}
 
-  onUpdateProduct():void{
-    this.productUpdate = this.productService.updateProducts(
-        this.idEdit, 
-        {...this.productForm.value,
-        ownerId: this.authService.getUserId()
-      }).subscribe(res => {
-      this.loadProducts();
+  ngOnChanges(){
+    if(this.receive != null) {
+    this.productForm.patchValue({
+      name: this.receive.name,
+      size: this.receive.size,
+      stock: this.receive.stock,
+      type: this.receive.type,
+      urlImage: this.receive.urlImage
+
+    });
+
+    this.idEdit = this.receive.id;
+  }}
+
+  onUpdate():void{
+    this.productUpdate = this.productService.updateProducts(this.idEdit, this.productForm.value).subscribe(res => {
+      window.location.reload();
+
       },
       err => {
         console.log('ERROR DE SERVIDOR');

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../shared/services/auth.service';
@@ -11,9 +11,14 @@ import { ProductService } from '../shared/services/product.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+
+  @Output () editForm = new EventEmitter<any>();
+
   productSubs: Subscription;
   productSubs2: Subscription;
   productUpdate: Subscription;
+
+  public receive: any;
   products = [];
   
   hot = [];
@@ -29,13 +34,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.loadProducts();
-    this.productForm = this.formBuilder.group({
-      description:['',[Validators.required, Validators.minLength(3)]],
-      imageUrl:'',
-      ownerId:'',
-      price: '',
-      title:''
-    });
+
    
   }
 
@@ -45,21 +44,12 @@ export class AdminComponent implements OnInit {
       Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
       this.hot = this.products.filter(s => s.type === 'calor');
       this.cold = this.products.filter(s => s.type === 'frio');
-      console.log(this.products);
     });
   }
 
   onEdit(product):void {
     console.log('A', product);
-    this.productForm.patchValue({
-      description: product.description,
-      imageUrl: product.imageUrl,
-      ownerId: product.ownerId,
-      price: product.price,
-      title: product.title
-
-    });
-
+    
     this.idEdit = product.id;
     // PATCHVALUE SETVALUE, setvalue hay que enviar pedacitos si o si
   }
@@ -85,8 +75,8 @@ export class AdminComponent implements OnInit {
     this.productUpdate ? this.productUpdate.unsubscribe() : '';
   }
 
-  saveEvent(event):void {
-    console.log('SEND HELP',event);
+  saveEvent(product):void {
+    this.receive = product;
   }
 
 }

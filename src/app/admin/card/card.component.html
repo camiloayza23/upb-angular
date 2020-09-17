@@ -7,7 +7,7 @@
     <mat-card-content>
       <p>Name: {{ name | uppercase }}</p>
       <p>Size: {{ size }}</p>
-      <p>Stock: {{stock}}</p>
+      <p>Stock: {{stock }}</p>
     </mat-card-content>
     <mat-card-actions>
         <button *ngIf="stock != 0" mat-button (click)="onEdit()" >Edit</button>
