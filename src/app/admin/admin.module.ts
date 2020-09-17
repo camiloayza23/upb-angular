@@ -10,6 +10,7 @@ import { ProductService } from '../shared/services/product.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Routes, RouterModule } from '@angular/router';
+import { CardComponent } from './card/card.component';
 
 const routes: Routes = [
   {path: '', component: AdminComponent}
@@ -17,7 +18,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AdminComponent
+    AdminComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
