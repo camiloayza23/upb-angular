@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     this.productSubs = this.productService.getProducts().subscribe(res => {
-      console.log('RES',res)
+      console.log('RS',res)
       console.log('RESPUESTA', Object.entries(res));
 
       Object.entries(res).map(p => this.products.push(p[1]));
