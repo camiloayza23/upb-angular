@@ -19,9 +19,7 @@ export class HeaderComponent implements OnInit, OnChanges{
 
   public ngOnInit(): void {
     this.homeSubs = this.store.select(s => s.admin).subscribe(res => {
-      this.total = res.total;
-      this.hot = res.hot;
-      this.cold = res.cold;
+     
     });
    
   }

@@ -13,22 +13,45 @@
         REPORT
       </button>
     </div>
-  
-    
+
+    <div style="padding-left: 10px;">
+      <input [(ngModel)]="search" type="search" placeholder="Search">
+      <button type="button" mat-button (click)="loadProductsSearch()"> SEARCH </button>
+    </div>
+
     <h2 style="background: lightBlue; padding: 10px;"> HOT </h2>
-    <div class="row">
+
+    <div class="row" *ngIf="result.length > 0 ">
+      <div *ngFor="let product of rhot"
+        class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" style="padding:50px; display:flex;">
+            <app-card (editPage)="saveEvent($event)" name="{{product.name}}" size="{{product.size | size}}" urlImage="{{product.urlImage}}" 
+            stock="{{product.stock}}" type="{{product.type}}" [product]="product" > </app-card>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="result.length == 0 ">
       <div *ngFor="let product of hot"
       class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" style="padding:50px; display:flex;">
         <app-card (editPage)="saveEvent($event)" name="{{product.name}}" size="{{product.size | size }}" urlImage="{{product.urlImage}}" stock="{{product.stock}} " type="{{product.type}}" [product]="product"> </app-card>
       </div>
     </div>
     <h2 style="background: lightBlue; padding: 10px;"> COLD </h2>
-    <div class="row">
+    <div class="row" *ngIf="result.length > 0 ">
+      <div *ngFor="let product of rcold"
+        class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" style="padding:50px; display:flex;">
+          <app-card (editPage)="saveEvent($event)" name="{{product.name}}" size="{{product.size | size}}" urlImage="{{product.urlImage}}" 
+          stock="{{product.stock}}" type="{{product.type}}" [product]="product" > </app-card>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="result.length == 0 ">
       <div *ngFor="let product of cold"
         class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" style="padding:50px; display:flex;">
           <app-card (editPage)="saveEvent($event)" name="{{product.name}}" size="{{product.size | size}}" urlImage="{{product.urlImage}}" 
           stock="{{product.stock}}" type="{{product.type}}" [product]="product" > </app-card>
       </div>
     </div>
+
+    
 
 </mat-drawer-container>

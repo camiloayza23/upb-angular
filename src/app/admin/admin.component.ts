@@ -27,9 +27,14 @@ export class AdminComponent implements OnInit{
   hot = [];
   cold = [];
 
+  result = [];
+  rhot = [];
+  rcold = [];
+
   productForm : FormGroup;
   idEdit:any;
-  //nameControl = new FormControl();
+
+  search:string;
 
   constructor(private formBuilder: FormBuilder,
               private productService: ProductService,
@@ -51,6 +56,25 @@ export class AdminComponent implements OnInit{
       this.hot = this.products.filter(s => s.type === 'calor');
       this.cold = this.products.filter(s => s.type === 'frio');
     });
+  }
+
+  loadProductsSearch(): void {
+    this.result = [];
+    this.rhot = [];
+    this.rcold = [];
+    if(this.search == null || this.search == ''){
+      this.loadProducts();
+      this.result = [];
+      this.rhot = [];
+      this.rcold = [];
+    } else {
+      this.products.filter(s => 
+        s.name.includes(this.search.toLowerCase()) ? this.result.push(s) : ''
+      );
+      this.rhot = this.result.filter(s => s.type === 'calor');
+      this.rcold = this.result.filter(s => s.type === 'frio');
+      
+    }
   }
 
   onUpdateProduct():void{
