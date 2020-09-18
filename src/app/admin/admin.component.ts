@@ -12,7 +12,7 @@ import { AddProduct } from './store/admin.actions'
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit, OnChanges{
+export class AdminComponent implements OnInit{
 
   @Output () editForm = new EventEmitter<any>();
 
@@ -37,13 +37,10 @@ export class AdminComponent implements OnInit, OnChanges{
               private store: Store<any> ) { }
 
   ngOnInit() {
-    this.loadProducts();
-    this.adminSubs = this.store.select(s => s.home).subscribe(res => {
-    });
-   
+    this.loadProducts();   
   }
 
-  ngOnChanges(){
+  onReport(){
     this.store.dispatch(AddProduct({total: this.products.length,cold:this.cold.length,hot: this.hot.length}));
   }
 
@@ -54,13 +51,6 @@ export class AdminComponent implements OnInit, OnChanges{
       this.hot = this.products.filter(s => s.type === 'calor');
       this.cold = this.products.filter(s => s.type === 'frio');
     });
-  }
-
-  onEdit(product):void {
-    console.log('A', product);
-    
-    this.idEdit = product.id;
-    // PATCHVALUE SETVALUE, setvalue hay que enviar pedacitos si o si
   }
 
   onUpdateProduct():void{

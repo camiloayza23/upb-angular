@@ -14,7 +14,7 @@ export const initialState: HomeState = {
 // Principio de inmutabilidad IMPORTANTE!
 const featureReducer = createReducer(
   initialState,
-  on(AddProduct, (state) => ({...state, totalHot: state.totalHot+1, totalCold: state.totalCold+1}))
+  on(AddProduct, (state) => ({...state, totalAmount: state.totalAmount, totalHot: state.totalHot, totalCold: state.totalCold}))
   );
 
 export function reducer(state: HomeState, action: Action): any {
