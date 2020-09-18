@@ -1,8 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../shared/services/auth.service';
 import { ProductService } from '../shared/services/product.service';
+import { Store } from '@ngrx/store'
+import { AddProduct } from './store/admin.actions'
 
 
 @Component({
@@ -10,13 +12,14 @@ import { ProductService } from '../shared/services/product.service';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnChanges{
 
   @Output () editForm = new EventEmitter<any>();
 
   productSubs: Subscription;
   productSubs2: Subscription;
   productUpdate: Subscription;
+  adminSubs: Subscription;
 
   public receive: any;
   products = [];
@@ -30,12 +33,18 @@ export class AdminComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private productService: ProductService,
-              private authService: AuthService ) { }
+              private authService: AuthService,
+              private store: Store<any> ) { }
 
   ngOnInit() {
     this.loadProducts();
-
+    this.adminSubs = this.store.select(s => s.home).subscribe(res => {
+    });
    
+  }
+
+  ngOnChanges(){
+    this.store.dispatch(AddProduct({total: this.products.length,cold:this.cold.length,hot: this.hot.length}));
   }
 
   loadProducts(): void {
