@@ -62,11 +62,9 @@ export class AdminComponent implements OnInit{
     this.result = [];
     this.rhot = [];
     this.rcold = [];
+
     if(this.search == null || this.search == ''){
       this.loadProducts();
-      this.result = [];
-      this.rhot = [];
-      this.rcold = [];
     } else {
       this.products.filter(s => 
         s.name.includes(this.search.toLowerCase()) ? this.result.push(s) : ''
